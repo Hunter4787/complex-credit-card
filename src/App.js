@@ -1,4 +1,4 @@
-import FormsyText from 'formsy-material-ui/lib/FormsyText';
+
 import Card from './card'
 import ReactDOM from 'react-dom'
 import './App.css';
@@ -10,9 +10,9 @@ class App extends React.Component {
             super(props);
 
             this.state = {
-                  numb: "**** **** **** ****",
-                  name: "*",
-                  thru: "**/**"
+                  numb: "",
+                  name: "",
+                  thru: ""
             }
       }
 
