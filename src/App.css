@@ -1,0 +1,93 @@
+.App {
+  text-align: center;
+}
+
+.body-style{
+  display: flex;
+
+}
+
+form input{
+  width: 60%;
+  height: 50px;
+  border: 1px solid gray;
+  margin-top: 20px;
+}
+.input-style{
+  width: 230%;
+  margin: 100px 30px;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  margin-left: 50px;
+}
+
+/*card css*/
+
+.card-style{
+  background-image:url(./earth.jpg);
+  background-repeat: no-repeat;
+  border: 2px solid black;
+  border-radius: 30px ;
+  width: 105%;
+}
+
+h1{
+  color: white;
+  text-align: right;
+  font-size: 2.5em;
+  margin-right: 20px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.numb{
+  background-color: #E5EB97;
+  opacity: 0.5;
+  color:black;
+  font-weight:bold;
+  height: 32px;
+  width: 27%;
+  font-size: 2em;
+}
+
+.main-body{
+ display: flex;
+
+}
+
+.buttom-logo{
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+  justify-content: flex-end;
+  margin-left: 64px;
+
+}
+
+.main-card{
+display: flex;
+flex-direction: column;
+margin-left: 50px;
+justify-content: space-between;
+}
+
+span{
+  color: white;
+}
+
+.date{
+  display: flex;
+  justify-content: space-between;
+}
+
+.fonts{
+  font-size: 2em;
+  color: white;
+}
+.main-left{
+  display: flex;
+  flex-direction: column;
+}
+.months{
+  padding-left: 205px;
+}
