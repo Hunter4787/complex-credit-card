@@ -10,9 +10,10 @@ class App extends React.Component {
             super(props);
 
             this.state = {
-                  numb: "",
-                  name: "",
-                  thru: ""
+                  name: "***",
+                  numb: "**** **** **** ****",
+                  thru: "**/**"
+
             }
       }
 
@@ -29,8 +30,8 @@ class App extends React.Component {
       render() {
             return (<div className="body-style">
 
-                  <Card inputs={[{ numb: this.state.numb }, { name: this.state.name.toUpperCase() }, { thru: this.state.thru }]} />
-                  <Form fillnumb={(keyword) => this.fillnumb(keyword)} fillname={(keyword) => this.fillname(keyword)} fillthru={(keyword) => this.fillthru(keyword)} />
+                  <Card inputs={{ numb: this.state.numb, name: this.state.name.toUpperCase(), thru: this.state.thru }} />
+                  <Form fillnumb={(keyword) => this.fillnumb(keyword)} fillname={(keyword) => this.fillname(keyword)} fillthru={(keyword) => this.fillthru(keyword)} states={this.state}/>
             </div>
             )
       }

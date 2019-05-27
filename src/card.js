@@ -17,7 +17,7 @@ class Card extends React.Component {
                     <div className="main-card">
                         <img src={require("./chip.png")} alt="chip logo" height="70" width="70" />
 
-                        <span className="fonts">{this.props.inputs[0].numb}</span>
+                        <span className="fonts">{this.props.inputs.numb}</span>
                         <span className="months">MONTH/YEAR</span>
 
 
@@ -28,10 +28,10 @@ class Card extends React.Component {
                                     THUR
                         </span>
                                 <img src={require("./right.png")} alt="chip logo" height="20px" width="21px" padding-top="11px" />
-                                <span className="fonts">{this.props.inputs[2].thru}</span>
+                                <span className="fonts">{this.props.inputs.thru}</span>
                             </div>
                         </div>
-                        <span className="fonts">{this.props.inputs[1].name}</span>
+                        <span className="fonts">{this.props.inputs.name}</span>
 
                     </div>
                     <div className="buttom-logo">
