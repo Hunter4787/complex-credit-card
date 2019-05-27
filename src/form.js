@@ -19,57 +19,50 @@ class Form extends Component {
 
 
 handelchangeNumb = (event) => {
-    this.setState({ numb: event.target.value })
-    this.props.fillnumb(event.target.value)
-}
+    this.setState({ numb: event.target.value },()=>this.props.fillnumb(this.state.numb)
+ )}
+    
 
 handelchangeName = (event) => {
 
-    this.setState({ name: event.target.value })
-    this.props.fillname(event.target.value)
+    this.setState({ name: event.target.value },()=>  this.props.fillname(this.state.name))
+  
 
 }
 handelchangeThru = (event) => {
-    this.setState({ thru: event.target.value })
-    this.props.fillthru(event.target.value)
+    this.setState({ thru: event.target.value } ,() =>  this.props.fillthru(this.state.thru))
+ 
 
 }
 
 ValidateNumb = (e) => {
-    if ((e.target.value.length != 16) || isNaN(e.target.value)) this.setState({ numbError: "the card number must be 16 numbers Only NUMBERS" })
-    else this.setState({ numbError: "" })
+    let numbregex= /^[0-9]{16}$/
+    return (!numbregex.test(e.target.value))?this.setState({ numbError: "the card number must be 16 numbers Only NUMBERS" }):this.setState({ numbError: "" })
 }
 
 ValidateName = (e) => {
-    if ((e.target.value.length <= 2) || (e.target.value.length > 20)) this.setState({ nameError: "Enter a valid name" })
-    else this.setState({ nameError: "" })
+    let nameregex= /^[a-zA-Z]{3,}$/
+    return (!nameregex.test(e.target.value))?this.setState({ nameError: "Enter a valid name" }):this.setState({ nameError: "" })
 }
 
 ValidateThru = (e) => {
-    if (e.target.value.includes("/")) this.setState({ thruError: "Valid thru must be like this '10/20'" })
-    else this.setState({ thruError: "" })
+    let thruregex=/^[0-9]{2}[/]{1}[0-9]{2}$/
+    return (!thruregex.test(e.target.value))?this.setState({ thruError: "Valid thru must be like this '10/20'" }):this.setState({ thruError: "" })
 }
 
-Nbr = (event) =>{
-    let nbr = this.state.numb.split("")
-    console.log(nbr)
-let newnbr = nbr.map((el,i) =>((i+1) % 4 === 0)?el+=" ":el)
-console.log(newnbr)
-event.target.value= newnbr.toString()
-// console
 
-}
+
 render() {
     return (<div>
         <form className="input-style">
 
-            <input ref="number" type="text" placeholder="Card number" onChange={(e) => { this.handelchangeNumb(e); this.ValidateNumb(e) }} onBlur={this.Nbr} />
+            <input maxLength="16" ref="number" max-length="16" type="text" placeholder="Card number" onChange={(e) => { this.handelchangeNumb(e); this.ValidateNumb(e) }}  />
             <div style={{ color: 'red' }}>{this.state.numbError}</div>
 
-            <input ref="name" type="text" placeholder="Name" onChange={(e) => { this.handelchangeName(e); this.ValidateName(e) }} />
+            <input maxLength="20" ref="name" type="text" placeholder="Name" onChange={(e) => { this.handelchangeName(e); this.ValidateName(e) }} />
             <div style={{ color: 'red' }}>{this.state.nameError}</div>
 
-            <input ref="thru" type="text" placeholder="mm/yy" onChange={(e) => { this.handelchangeThru(e); this.ValidateThru(e) }} />
+            <input maxLength="5" ref="thru" type="text" placeholder="mm/yy" onChange={(e) => { this.handelchangeThru(e); this.ValidateThru(e) }} />
             <div style={{ color: 'red' }}>{this.state.thruError}</div>
         </form>
 

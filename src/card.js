@@ -1,23 +1,33 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom'
+
 
 class Card extends React.Component {
     constructor(props) {
         super(props);
-       
+        this.setState = {
+            spaced: "23654"
+        }
+
     }
-  
+
+    Nbr = (props) => {
+        if (this.props.inputs.numb.length === 16) {
+            let nbr = this.props.inputs.numb
+            nbr = nbr.split("").map((el, i) => { if (((i + 1) % 4 === 0) && (i !== 0)) el = el + " " }).join("")
+            this.setState({ spaced: nbr })
+        }
+    }
+
     render() {
         return (<div >
             <div className="card-style">
-
-
                 <h1>Credit Card</h1>
                 <div className="main-body">
                     <div className="main-card">
                         <img src={require("./chip.png")} alt="chip logo" height="70" width="70" />
 
-                        <span className="fonts">{this.props.inputs.numb}</span>
+                        <span on className="fonts" >{this.props.inputs.numb}</span>
+                        <span className="fonts"></span>
                         <span className="months">MONTH/YEAR</span>
 
 
