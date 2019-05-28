@@ -4,18 +4,10 @@ import React, { Component } from 'react';
 class Card extends React.Component {
     constructor(props) {
         super(props);
-        this.setState = {
-            spaced: "23654"
+        this.state = {
+            spaced: ""
         }
 
-    }
-
-    Nbr = (props) => {
-        if (this.props.inputs.numb.length === 16) {
-            let nbr = this.props.inputs.numb
-            nbr = nbr.split("").map((el, i) => { if (((i + 1) % 4 === 0) && (i !== 0)) el = el + " " }).join("")
-            this.setState({ spaced: nbr })
-        }
     }
 
     render() {
@@ -26,7 +18,7 @@ class Card extends React.Component {
                     <div className="main-card">
                         <img src={require("./chip.png")} alt="chip logo" height="70" width="70" />
 
-                        <span on className="fonts" >{this.props.inputs.numb}</span>
+                        <span className="fonts" >{this.props.numb}</span>
                         <span className="fonts"></span>
                         <span className="months">MONTH/YEAR</span>
 
@@ -38,10 +30,10 @@ class Card extends React.Component {
                                     THUR
                         </span>
                                 <img src={require("./right.png")} alt="chip logo" height="20px" width="21px" padding-top="11px" />
-                                <span className="fonts">{this.props.inputs.thru}</span>
+                                <span className="fonts">{this.props.thru}</span>
                             </div>
                         </div>
-                        <span className="fonts">{this.props.inputs.name}</span>
+                        <span className="fonts">{this.props.name}</span>
 
                     </div>
                     <div className="buttom-logo">

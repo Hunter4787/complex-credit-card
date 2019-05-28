@@ -25,7 +25,7 @@ handelchangeNumb = (event) => {
 
 handelchangeName = (event) => {
 
-    this.setState({ name: event.target.value },()=>  this.props.fillname(this.state.name))
+    this.setState({ name: event.target.value },()=> this.props.fillname(this.state.name))
   
 
 }
@@ -38,6 +38,9 @@ handelchangeThru = (event) => {
 ValidateNumb = (e) => {
     let numbregex= /^[0-9]{16}$/
     return (!numbregex.test(e.target.value))?this.setState({ numbError: "the card number must be 16 numbers Only NUMBERS" }):this.setState({ numbError: "" })
+//     let nbr = this.state.numb
+//     nbr = nbr.split("").map((el, i) => { if (((i + 1) % 4 === 0) && (i !== 0)) el = el + " " }).join("")
+//     this.setState({numb : nbr })
 }
 
 ValidateName = (e) => {
@@ -50,13 +53,37 @@ ValidateThru = (e) => {
     return (!thruregex.test(e.target.value))?this.setState({ thruError: "Valid thru must be like this '10/20'" }):this.setState({ thruError: "" })
 }
 
+handleChangeNumber = event => {
+    let {value} = event.target;
+    let v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+    let matches = v.match(/\d{4,16}/g);
+    let match = (matches && matches[0]) || '';
+    let parts = [];
+    for ( let i=0, len=match.length; i<len; i+=4) {
+        parts.push(match.substring(i, i+4))
+    }
+
+    if (parts.length) {
+        this.setState({numb:parts.join(' ')})
+    } else {
+        this.setState({ numb:value });
+    }
+  };
+// Nbr=()=> {
+//     // if (this.state.numb.length === 16) {
+//         let nbr = this.state.numb
+//         nbr = nbr.split("").map((el, i) => { if (((i + 1) % 4 === 0) && (i !== 0)) el = el + " " }).join("")
+//         this.setState({numb : nbr })
+
+//     // }
+// }
 
 
 render() {
     return (<div>
         <form className="input-style">
 
-            <input maxLength="16" ref="number" max-length="16" type="text" placeholder="Card number" onChange={(e) => { this.handelchangeNumb(e); this.ValidateNumb(e) }}  />
+            <input maxLength="16" ref="number" type="text" placeholder="Card number" onChange={(e) => { this.handelchangeNumb(e); this.ValidateNumb(e)}}  />
             <div style={{ color: 'red' }}>{this.state.numbError}</div>
 
             <input maxLength="20" ref="name" type="text" placeholder="Name" onChange={(e) => { this.handelchangeName(e); this.ValidateName(e) }} />
